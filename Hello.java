@@ -63,9 +63,6 @@ public class Hello {
         System.out.println();
     }
 
-
-
-    
     public static void MergeTwoArray() { // merge two array without using extra space
         int[] s = { 2, 3, 0, 0 };
         int[] p = { 4, 5 };
@@ -86,7 +83,6 @@ public class Hello {
                 j--;
             }
         }
-
         for (int num : s) {
             System.out.print(num + " ");
 
@@ -160,10 +156,89 @@ public class Hello {
         }
     }
 
+    public static void FindDuplicates(int[] arr) {// find duplicate element in array
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = arr.length - 1; j > i; j--) {
+                if (arr[i] == arr[j]) {
+                    System.out.println("duplicate element is : " + arr[j]);
+                    break;
+                }
+            }
+
+        }
+    }
+
+    public static int FindMissingElement(int[] arr) { // find missing element in an array
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i + 1] != arr[i] + 1) {
+                return arr[i] + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void AlternatingPositiveNegative(int[] arr) { // alternating postive negative elements
+        int n = arr.length;
+        int[] temp = new int[n];
+        int postIdx = 0;
+        int negIdx = 1;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] >= 0) {
+                if (postIdx < n) {
+                    temp[postIdx] = arr[i];
+                    postIdx += 2;
+                }
+            } else {
+                if (negIdx < n) {
+                    temp[negIdx] = arr[i];
+                    negIdx += 2;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(temp[i] + " ");
+        }
+
+    }
+
+    public static boolean isRoatatedSorted(int[] arr) { // check wheter array is roatated and sorted
+        int count = 0;
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > arr[(i + 1) % n]) {
+                count++;
+            }
+        }
+        if (count == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public static void FindPairs(int[] arr,int target){    // find all pairs of given sum
+        int l = 0;
+        int r = arr.length-1;
+
+        while(l<r){
+            int sum = arr[l] + arr[r];
+            if(sum == target){
+                System.out.println("Target "+ target);
+                System.out.println("Pairs found : " + "(" + arr[l] + "," + arr[r] + ")");
+                return;
+            }
+            else if(sum <target){
+                l++;
+            }
+            else{
+                r--;
+            }
+        }    
+    }
+
     public static void main(String[] args) {
-
-        int[] nums = { 1, 2, 2, 3, 3, 3 };
-        Occurences(nums);
-
+        int[] arr = {1,2,3,4,5};
+      FindPairs(arr, 9);;
     }
 }
