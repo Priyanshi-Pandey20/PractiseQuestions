@@ -132,6 +132,10 @@ public class Hello {
         }
     }
 
+
+
+
+
     public static void Occurences(int[] arr) { // Count the number of occurrences of an element
         for (int i = 0; i < arr.length; i++) {
             int count = 0;
@@ -155,6 +159,20 @@ public class Hello {
             System.out.println(arr[i] + " ocuured " + count + " times ");
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void FindDuplicates(int[] arr) {// find duplicate element in array
         for (int i = 0; i < arr.length; i++) {
@@ -216,29 +234,75 @@ public class Hello {
         }
     }
 
-
-    public static void FindPairs(int[] arr,int target){    // find all pairs of given sum
+    public static void FindPairs(int[] arr, int target) { // find all pairs of given sum
         int l = 0;
-        int r = arr.length-1;
+        int r = arr.length - 1;
 
-        while(l<r){
+        while (l < r) {
             int sum = arr[l] + arr[r];
-            if(sum == target){
-                System.out.println("Target "+ target);
+            if (sum == target) {
+                System.out.println("Target " + target);
                 System.out.println("Pairs found : " + "(" + arr[l] + "," + arr[r] + ")");
                 return;
-            }
-            else if(sum <target){
+            } else if (sum < target) {
                 l++;
-            }
-            else{
+            } else {
                 r--;
             }
-        }    
+        }
+    }
+
+    public static void FindUnionIntersection() {// find union and intersection of array
+        int[] arr1 = { 1, 2, 3, 4, 5 };
+        int[] arr2 = { 1, 2, 3, 6, 7 };
+           System.out.print("union of array : ");
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr2.length; j++) {
+                if (arr1[i] == arr2[j]) {
+                    System.out.print( arr1[i] + " ");
+
+                    break;
+                }
+
+            }
+        }
+        System.out.println();
+         System.out.print("Intersection of array : " );
+        for (int j = 0; j < arr2.length; j++) {
+            boolean found = false;
+            for (int i = 0; i < arr1.length; i++) {
+                if (arr2[j] == arr1[i]) {
+                    found = true;
+                    break;
+
+                }
+
+            }
+            if (!found) {
+                System.out.print(arr2[j] + " ");
+            }
+        }
+
+    }
+
+    public static void LeadersInArray(int[] arr){ // find the leader element  in an array
+        for(int i =0;i<arr.length-1;i++){
+            int curr = arr[i];
+            boolean isfound = true;
+            for(int j =i+1;j<arr.length;j++){
+                if(curr<arr[j]){
+                    isfound = false;
+                    break;
+                }
+            }
+            if(isfound){
+                System.out.println(curr + "is leader in an array");
+            }
+        }
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
-      FindPairs(arr, 9);;
+        int[] arr = {1,2,7,4,6};
+        LeadersInArray(arr);
     }
 }
