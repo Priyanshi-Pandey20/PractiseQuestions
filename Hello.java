@@ -132,10 +132,6 @@ public class Hello {
         }
     }
 
-
-
-
-
     public static void Occurences(int[] arr) { // Count the number of occurrences of an element
         for (int i = 0; i < arr.length; i++) {
             int count = 0;
@@ -159,20 +155,6 @@ public class Hello {
             System.out.println(arr[i] + " ocuured " + count + " times ");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public static void FindDuplicates(int[] arr) {// find duplicate element in array
         for (int i = 0; i < arr.length; i++) {
@@ -255,11 +237,11 @@ public class Hello {
     public static void FindUnionIntersection() {// find union and intersection of array
         int[] arr1 = { 1, 2, 3, 4, 5 };
         int[] arr2 = { 1, 2, 3, 6, 7 };
-           System.out.print("union of array : ");
+        System.out.print("union of array : ");
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr2.length; j++) {
                 if (arr1[i] == arr2[j]) {
-                    System.out.print( arr1[i] + " ");
+                    System.out.print(arr1[i] + " ");
 
                     break;
                 }
@@ -267,7 +249,7 @@ public class Hello {
             }
         }
         System.out.println();
-         System.out.print("Intersection of array : " );
+        System.out.print("Intersection of array : ");
         for (int j = 0; j < arr2.length; j++) {
             boolean found = false;
             for (int i = 0; i < arr1.length; i++) {
@@ -285,24 +267,41 @@ public class Hello {
 
     }
 
-    public static void LeadersInArray(int[] arr){ // find the leader element  in an array
-        for(int i =0;i<arr.length-1;i++){
+    public static void LeadersInArray(int[] arr) { // find the leader element in an array
+        for (int i = 0; i < arr.length - 1; i++) {
             int curr = arr[i];
             boolean isfound = true;
-            for(int j =i+1;j<arr.length;j++){
-                if(curr<arr[j]){
+            for (int j = i + 1; j < arr.length; j++) {
+                if (curr < arr[j]) {
                     isfound = false;
                     break;
                 }
             }
-            if(isfound){
+            if (isfound) {
                 System.out.println(curr + "is leader in an array");
             }
         }
     }
 
+    public static void CyclicallyRoatateArray(int[] arr) { // Cyclically rotate an array by one
+        int n = arr.length;
+        int last = arr[arr.length - 1];
+
+        for (int i = n- 1; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[0] = last;
+       
+
+    }
+
+
     public static void main(String[] args) {
-        int[] arr = {1,2,7,4,6};
-        LeadersInArray(arr);
+        int[] arr = { 1, 2,3,4,5 };
+       
+        CyclicallyRoatateArray(arr);
+         for(int i = 0;i<arr.length;i++){
+            System.out.println(  arr[i] + " ");
+        }
     }
 }
