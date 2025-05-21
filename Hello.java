@@ -169,6 +169,9 @@ public class Hello {
     }
 
     public static int FindMissingElement(int[] arr) { // find missing element in an array
+        if (arr == null || arr.length < 2) {
+            return -1;
+        }
         for (int i = 0; i < arr.length - 1; i++) {
             if (arr[i + 1] != arr[i] + 1) {
                 return arr[i] + 1;
@@ -287,21 +290,81 @@ public class Hello {
         int n = arr.length;
         int last = arr[arr.length - 1];
 
-        for (int i = n- 1; i > 0; i--) {
+        for (int i = n - 1; i > 0; i--) {
             arr[i] = arr[i - 1];
         }
         arr[0] = last;
-       
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
 
     }
 
+    public static void AllZeroAtFront(int[] arr) { // put all zeroes in front then negative then positive
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        int[] temp = new int[arr.length];
+        int idx = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 0) {
+                temp[idx++] = arr[i];
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 0) {
+                temp[idx++] = arr[i];
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                temp[idx++] = arr[i];
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = temp[i];
+            System.out.print(arr[i] + " ");
+        }
+
+    }
+
+    public static void ReverseString() {// revere a string
+        String str = "coding";
+        String rev = "";
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+        System.out.println(rev);
+    }
+
+    public static String CompressString(String str) {// count the no. of frequency of a character
+
+        String newStr = "";
+        for (int i = 0; i < str.length(); i++) {
+            Integer count = 1;
+            while (i < str.length() - 1 && str.charAt(i) == str.charAt(i + 1)) {
+                count++;
+                i++;
+            }
+            newStr += str.charAt(i);
+            if (count > 1) {
+                newStr += count.toString();
+            }
+        }
+        return newStr;
+    }
 
     public static void main(String[] args) {
-        int[] arr = { 1, 2,3,4,5 };
+       String str = "aaabbbbcc";
+       System.out.println(CompressString(str));
        
-        CyclicallyRoatateArray(arr);
-         for(int i = 0;i<arr.length;i++){
-            System.out.println(  arr[i] + " ");
-        }
     }
 }
