@@ -205,7 +205,7 @@ public class Hello {
     }
 
     public static boolean isRoatatedSorted(int[] arr) { // check wheter array is roatated and sorted
-        int count = 0;
+        int count = 0; // {5,6,1,2,3,4}
         int n = arr.length;
         for (int i = 0; i < n; i++) {
             if (arr[i] > arr[(i + 1) % n]) {
@@ -226,7 +226,6 @@ public class Hello {
         while (l < r) {
             int sum = arr[l] + arr[r];
             if (sum == target) {
-                System.out.println("Target " + target);
                 System.out.println("Pairs found : " + "(" + arr[l] + "," + arr[r] + ")");
                 return;
             } else if (sum < target) {
@@ -239,7 +238,7 @@ public class Hello {
 
     public static void FindUnionIntersection() {// find union and intersection of array
         int[] arr1 = { 1, 2, 3, 4, 5 };
-        int[] arr2 = { 1, 2, 3, 6, 7 };
+        int[] arr2 = { 1, 2, 3, 4, 5, 7 };
         System.out.print("union of array : ");
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr2.length; j++) {
@@ -261,7 +260,6 @@ public class Hello {
                     break;
 
                 }
-
             }
             if (!found) {
                 System.out.print(arr2[j] + " ");
@@ -362,9 +360,218 @@ public class Hello {
         return newStr;
     }
 
+    public static void RemoveDuplicates() { // remove duplicates
+        String str4 = "happy";
+        for (int i = 0; i < str4.length(); i++) {
+            boolean flag = true;
+            for (int j = 0; j < i; j++) {
+                if (str4.charAt(i) == str4.charAt(j) && i != j) {
+                    flag = false;
+                    break;
+                }
+
+            }
+            if (flag) {
+                System.out.print(str4.charAt(i) + "");
+            }
+
+        }
+    }
+
+    public static void isPalindrome(String str) { // check whether a string is palindrome or not
+        int n = str.length();
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < n / 2; i++) {
+            if (str.charAt(i) != str.charAt(n - i - 1)) {
+                isPalindrome = false;
+                break;
+            }
+
+        }
+        if (isPalindrome) {
+            System.out.println("palindrome");
+        } else {
+            System.out.println("not a palindrome");
+        }
+
+    }
+
+    public static void printAllPermutaions(String str, String ans) { // print all permutation of given string
+
+        if (str.length() == 0) {
+            System.out.print(ans + " ");
+            return;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            char curr = str.charAt(i);
+            String result = str.substring(0, i) + str.substring(i + 1);
+
+            printAllPermutaions(result, ans + curr);
+        }
+
+    }
+
+    public static String longestCommonPrefix(String[] str) { // longest common prefix
+
+        if (str == null || str.length == 0) {
+            return " ";
+        }
+
+        String prefix = str[0];
+        for (int i = 1; i < str.length; i++) {
+            while (!str[i].startsWith(prefix)) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty())
+                    return "";
+            }
+        }
+        return prefix;
+    }
+
+    public static String sortString(String str) {// group anagrams
+        char[] chars = str.toCharArray();
+
+        Arrays.sort(chars);
+        return new String(chars);
+
+    }
+
+    public static List<List<String>> GroupAnagrams(String[] s) {
+        List<List<String>> result = new ArrayList<>();
+        List<String> keys = new ArrayList<>();
+
+        for (String str : s) {
+            String sorted = sortString(str);
+
+            boolean found = false;
+
+            for (int i = 0; i < keys.size(); i++) {
+                if (keys.get(i).equals(sorted)) {
+                    result.get(i).add(str);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                List<String> newGroup = new ArrayList<>();
+                newGroup.add(str);
+                result.add(newGroup);
+                keys.add(sorted);
+            }
+        }
+        return result;
+    }
+
+    public static int subStringSearch(String str1, String str2) { // Substring search
+        if (str2.length() == 0) {
+            return 0;
+        }
+        int l1 = str1.length();
+        int l2 = str2.length();
+
+        for (int i = 0; i <= l1 - l2; i++) {
+            int j;
+            for (j = 0; j < l2; j++) {
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    break;
+                }
+            }
+            if (j == l2) {
+                return i;
+            }
+        }
+        return -1;
+
+    }
+
+    public static boolean checkPalindrome(String str, int left, int right) {// Valid Palindrome after removing at most
+                                                                            // one character
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+
+            }
+            left++;
+            right--;
+        }
+        return true;
+
+    }
+
+    public static boolean ValidPalindrome(String str) {
+        int left = 0, right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return checkPalindrome(str, left + 1, right) || checkPalindrome(str, left, right - 1);
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static int stringTOInt(String str) { // convert string to integer
+        int result = 0;
+        int i = 0;
+        boolean isNegative = false;
+
+        if (str.charAt(0) == '-') {
+            isNegative = true;
+            i++;
+        } else if (str.charAt(0) == '+') {
+            i++;
+        }
+        while (i < str.length()) {
+            char ch = str.charAt(i);
+            result = result * 10 + (ch - '0');
+            i++;
+        }
+        return isNegative ? -result : result;
+    }
+
+    public static boolean isSubstring(String combined, String s2) { // Check if a string is a rotation of another string
+
+        int n = combined.length();
+        int m = s2.length();
+
+        for (int i = 0; i <= n - m; i++) {
+            int j = 0;
+            while (j < m && combined.charAt(i + j) == s2.charAt(j)) {
+                j++;
+            }
+            if (j == m) {
+                return true; 
+            }
+        }
+        return false;
+    }
+
+    public static boolean isRotation(String s1, String s2) {
+        if (s1.length() != s2.length() || s1.length() == 0) {
+            return false;
+        }
+        String combined = s1 + s1;
+
+        return isSubstring(combined, s2);
+    }
+
+
+    public boolean isSubsequence(String s, String t) {// Check if one string is a subsequence of another
+        int j = 0;
+        for (int i = 0; i < t.length() && j < s.length(); i++) {
+            if (s.charAt(j) == t.charAt(i))
+                j++;
+        }
+        return (j == s.length()) ? true : false;
+    }
+
     public static void main(String[] args) {
-       String str = "aaabbbbcc";
-       System.out.println(CompressString(str));
-       
+        String s1 = "abcd";
+        String s2 = "bdca";
+
+        System.out.println(isRotation(s1, s2));
+
     }
 }
