@@ -279,7 +279,7 @@ public class Hello {
                 }
             }
             if (isfound) {
-                System.out.println(curr + "is leader in an array");
+                System.out.println(curr + " is leader in an array");
             }
         }
     }
@@ -292,9 +292,10 @@ public class Hello {
             arr[i] = arr[i - 1];
         }
         arr[0] = last;
+        System.out.print("cyclically roated array : ");
 
         for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
+            System.out.print(+arr[i] + " ");
         }
 
     }
@@ -309,7 +310,6 @@ public class Hello {
                 }
             }
         }
-
         int[] temp = new int[arr.length];
         int idx = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -412,7 +412,7 @@ public class Hello {
 
     }
 
-    public static String longestCommonPrefix(String[] str) { // longest common prefix
+    public static String longestCommonPrefix(String[] str) { // longest common prefix {"sun", "sunset", "sunshine"}
 
         if (str == null || str.length == 0) {
             return " ";
@@ -429,7 +429,15 @@ public class Hello {
         return prefix;
     }
 
-    public static String sortString(String str) {// group anagrams
+
+
+
+
+
+
+
+
+    public static String sortString(String str) {      // group anagrams
         char[] chars = str.toCharArray();
 
         Arrays.sort(chars);
@@ -464,6 +472,22 @@ public class Hello {
         return result;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static int subStringSearch(String str1, String str2) { // Substring search
         if (str2.length() == 0) {
             return 0;
@@ -488,6 +512,7 @@ public class Hello {
 
     public static boolean checkPalindrome(String str, int left, int right) {// Valid Palindrome after removing at most
                                                                             // one character
+
         while (left < right) {
             if (str.charAt(left) != str.charAt(right)) {
                 return false;
@@ -542,7 +567,7 @@ public class Hello {
                 j++;
             }
             if (j == m) {
-                return true; 
+                return true;
             }
         }
         return false;
@@ -557,8 +582,7 @@ public class Hello {
         return isSubstring(combined, s2);
     }
 
-
-    public boolean isSubsequence(String s, String t) {// Check if one string is a subsequence of another
+    public boolean isSubsequence(String s, String t) { // Check if one string is a subsequence of another
         int j = 0;
         for (int i = 0; i < t.length() && j < s.length(); i++) {
             if (s.charAt(j) == t.charAt(i))
@@ -567,11 +591,11 @@ public class Hello {
         return (j == s.length()) ? true : false;
     }
 
+    
+
     public static void main(String[] args) {
-        String s1 = "abcd";
-        String s2 = "bdca";
-
-        System.out.println(isRotation(s1, s2));
-
+        String[] s = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        System.out.println(GroupAnagrams(s));
+        
     }
 }
