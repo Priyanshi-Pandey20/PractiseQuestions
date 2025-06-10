@@ -334,6 +334,63 @@ public class Hello {
 
     }
 
+
+
+
+
+
+
+    
+
+      public static void findKthMaxMin(int[] arr, int k) { // find kth max and min element
+        int size = arr.length;
+        Arrays.sort(arr);
+
+        int kthsmallest = arr[k - 1];
+        int kthlargest = arr[arr.length - k];
+
+        System.out.println( "kth min elemnt : " + kthsmallest);
+        System.out.println("kth max element : " + kthlargest);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+     public static void dutchNationalFlag(int[] arr){ // Dutch National flag problem
+        int mid = 0; 
+        int low = 0;
+        int high = arr.length -1;
+        while(mid<=high){
+            if(arr[mid] == 0){
+                int temp = arr[mid];
+                arr[mid] = arr[low];
+                arr[low] = temp;
+                mid++;
+                low++;
+            }
+            else if(arr[mid] == 1){
+              mid++;
+            }
+            else{
+                  int temp = arr[mid];
+                arr[mid] = arr[high];
+                arr[high] = temp;
+                high--;
+            }
+        }
+       for(int i =0;i<arr.length;i++){
+        System.out.println(arr[i]);
+       }
+    }
+
     public static void ReverseString() {// revere a string
         String str = "coding";
         String rev = "";
@@ -429,15 +486,7 @@ public class Hello {
         return prefix;
     }
 
-
-
-
-
-
-
-
-
-    public static String sortString(String str) {      // group anagrams
+    public static String sortString(String str) { // group anagrams
         char[] chars = str.toCharArray();
 
         Arrays.sort(chars);
@@ -472,22 +521,6 @@ public class Hello {
         return result;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static int subStringSearch(String str1, String str2) { // Substring search
         if (str2.length() == 0) {
             return 0;
@@ -516,13 +549,11 @@ public class Hello {
         while (left < right) {
             if (str.charAt(left) != str.charAt(right)) {
                 return false;
-
             }
             left++;
             right--;
         }
         return true;
-
     }
 
     public static boolean ValidPalindrome(String str) {
@@ -537,7 +568,7 @@ public class Hello {
         return true;
     }
 
-    public static int stringTOInt(String str) { // convert string to integer
+    public static int stringToInt(String str) { // convert string to integer
         int result = 0;
         int i = 0;
         boolean isNegative = false;
@@ -582,7 +613,7 @@ public class Hello {
         return isSubstring(combined, s2);
     }
 
-    public boolean isSubsequence(String s, String t) { // Check if one string is a subsequence of another
+    public static boolean isSubsequence(String s, String t) { // Check if one string is a subsequence of another
         int j = 0;
         for (int i = 0; i < t.length() && j < s.length(); i++) {
             if (s.charAt(j) == t.charAt(i))
@@ -591,11 +622,11 @@ public class Hello {
         return (j == s.length()) ? true : false;
     }
 
-    
+   
+
 
     public static void main(String[] args) {
-        String[] s = {"eat", "tea", "tan", "ate", "nat", "bat"};
-        System.out.println(GroupAnagrams(s));
-        
+        int[] arr = {3,0,9,2,1};
+        findKthMaxMin(arr, 2);
     }
 }
