@@ -94,14 +94,48 @@ public class Test {
         }
     }
 
-    
+    public static void findUnionNIntersection(int[] arr1, int[] arr2) {
+        System.out.println("Intersection elements ");
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr2.length; j++) {
+                if (arr1[i] == arr2[j]) {
+                    System.out.print(arr1[i] + " ");
+                }
+            }
+        }
+        System.out.println();
+
+        int max = 0;
+        for (int val : arr1)
+            max = Math.max(max, val);
+        for (int val : arr2)
+            max = Math.max(max, val);
+
+        boolean[] found = new boolean[max + 1];
+        System.out.println("union elements");
+
+        for (int i = 0; i < arr1.length; i++) {
+            if (!found[arr1[i]]) {
+                System.out.println(arr1[i]);
+                found[arr1[i]] = true;
+            }
+
+            for (int j = 0; j < arr2.length; j++) {
+                if (!found[arr2[j]]) {
+                    System.out.println(arr2[j]);
+                    found[arr2[j]] = true;
+                }
+            }
+
+        }
+
+    }
 
     public static void main(String[] args) {
-        int[] arr = { 8, -2, 3, -1, 5, 0, -4 };
-        // findMinMax(arr);
-        // reveseArrayInPlace(arr);
+        int[] arr1 = { 1, 2, 3, 4, 5, 7 };
+        int[] arr2 = { 1, 2, 3, 4,5,8 };
 
-        moveNegativeAtbeignning(arr);
+        findUnionNIntersection(arr1, arr2);
     }
 
 }

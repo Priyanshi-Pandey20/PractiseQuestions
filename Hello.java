@@ -334,61 +334,41 @@ public class Hello {
 
     }
 
-
-
-
-
-
-
-    
-
-      public static void findKthMaxMin(int[] arr, int k) { // find kth max and min element
+    public static void findKthMaxMin(int[] arr, int k) { // find kth max and min element
         int size = arr.length;
         Arrays.sort(arr);
 
         int kthsmallest = arr[k - 1];
         int kthlargest = arr[arr.length - k];
 
-        System.out.println( "kth min elemnt : " + kthsmallest);
+        System.out.println("kth min elemnt : " + kthsmallest);
         System.out.println("kth max element : " + kthlargest);
 
     }
 
-
-
-
-
-
-
-
-
-
-
-     public static void dutchNationalFlag(int[] arr){ // Dutch National flag problem
-        int mid = 0; 
+    public static void dutchNationalFlag(int[] arr) { // Dutch National flag problem
+        int mid = 0;
         int low = 0;
-        int high = arr.length -1;
-        while(mid<=high){
-            if(arr[mid] == 0){
+        int high = arr.length - 1;
+        while (mid <= high) {
+            if (arr[mid] == 0) {
                 int temp = arr[mid];
                 arr[mid] = arr[low];
                 arr[low] = temp;
                 mid++;
                 low++;
-            }
-            else if(arr[mid] == 1){
-              mid++;
-            }
-            else{
-                  int temp = arr[mid];
+            } else if (arr[mid] == 1) {
+                mid++;
+            } else {
+                int temp = arr[mid];
                 arr[mid] = arr[high];
                 arr[high] = temp;
                 high--;
             }
         }
-       for(int i =0;i<arr.length;i++){
-        System.out.println(arr[i]);
-       }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 
     public static void ReverseString() {// revere a string
@@ -622,11 +602,8 @@ public class Hello {
         return (j == s.length()) ? true : false;
     }
 
-   
-
-
     public static void main(String[] args) {
-        int[] arr = {3,0,9,2,1};
-        findKthMaxMin(arr, 2);
+        int[] arr = { 2, 0, 1, 2, 1, 0, 0, 1, 2 };
+        dutchNationalFlag(arr);
     }
 }
