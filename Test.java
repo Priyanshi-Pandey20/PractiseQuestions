@@ -155,14 +155,47 @@ public class Test {
             maxSum = Math.max(maxSum, currSum);
         }
         System.out.println(maxSum);
-       
+
     }
 
-    
+    public static boolean isRoatatedSorted(int[] arr) { // Q9
+        int n = arr.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+
+            if (arr[i] > arr[(i + 1) % n]) {
+                count++;
+            }
+
+        }
+        if (count == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void LeadersInArray(int[] arr){ // Q10
+        for(int i =0;i<arr.length-1;i++){
+            int curr = arr[i];
+            boolean isfound = true;
+
+            for(int j = i+1;j<arr.length-1;j++){
+                if(curr<arr[j]){
+                    isfound = false;
+                    break;
+                }
+            }
+            if(isfound){
+                System.out.println(curr);
+
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 4, 5, 7 };
-       KandansAlogrithm(arr);
+        int[] arr = { 4, 5, 1, 2, 3 };
+        LeadersInArray(arr);
     }
 
 }

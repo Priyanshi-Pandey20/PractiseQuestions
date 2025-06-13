@@ -293,12 +293,12 @@ public class Hello {
         }
         arr[0] = last;
         System.out.print("cyclically roated array : ");
-
         for (int i = 0; i < n; i++) {
             System.out.print(+arr[i] + " ");
         }
 
     }
+    
 
     public static void AllZeroAtFront(int[] arr) { // put all zeroes in front then negative then positive
         for (int i = 0; i < arr.length; i++) {
