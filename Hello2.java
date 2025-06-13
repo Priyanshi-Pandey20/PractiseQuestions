@@ -65,16 +65,16 @@ public class Hello2 {
 
 
     public static void main(String[] args) {
-        int m = 3;
-        int n = 3;
-        int[][] mt = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-        System.out.print("Original Matrix : ");
-        for (int i = 0; i < m; i++) {
-            System.out.println(Arrays.toString(mt[i]));
-        }
+               char[][] grid = {
+            {'1', '1', '0', '0', '0'},
+            {'1', '1', '0', '0', '0'},
+            {'0', '0', '1', '0', '0'},
+            {'0', '0', '0', '1', '1'}
+        };
 
-         printDiagonalElements( mt);
-        
+       Hello2 sol = new Hello2();
+        int islands = sol.numIslands(grid);
+        System.out.println("Number of islands: " + islands);
        
     }
 }
