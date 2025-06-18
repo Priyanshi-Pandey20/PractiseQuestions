@@ -75,16 +75,6 @@ public class Hello2 {
         return false;
     }
 
-
-
-
-
-
-
-
-
-    
-
     public static int[][] multiplyMatrices(int[][] A, int[][] B) {
         int rowsA = A.length;
         int colsA = A[0].length;
@@ -102,54 +92,120 @@ public class Hello2 {
         return result;
     }
 
+    public static void boundaryTraversal(int[][] matrix) { // Boundary traversal of the matrix
+        int n = matrix.length;
+        int m = matrix[0].length;
+        for (int j = 0; j < m; j++) {
+            System.out.print(matrix[0][j] + " ");
+        }
+        for (int i = 1; i < n - 1; i++) {
+            System.out.print(matrix[i][m - 1] + " ");
+        }
+        if (n > 1) {
+            for (int j = m - 1; j >= 0; j--) {
+                System.out.print(matrix[n - 1][j] + " ");
+            }
+        }
+        if (m > 1) {
+            for (int i = n - 2; i > 0; i--) {
+                System.out.print(matrix[i][0] + " ");
+            }
+        }
+        System.out.println();
+    }
 
 
 
 
+    public static void printPascalTriangle(int n) { // Pascal's Traingle
+        for (int line = 0; line < n; line++) {
+            int val = 1;
+
+            for (int space = 0; space < n - line - 1; space++) {
+                System.out.print(" ");
+            }
+
+            for (int i = 0; i <= line; i++) {
+                System.out.print(val + " ");
+                val = val * (line - i) / (i + 1);
+            }
+            System.out.println();
+        }
+    }
+
+     public static int findMedian(int[][] matrix) {
+        int r = matrix.length;
+        int c = matrix[0].length;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < r; i++) {
+            min = Math.min(min, matrix[i][0]);
+            max = Math.max(max, matrix[i][c - 1]);
+        }
+        int desired = (r * c + 1) / 2;
+        while(min < max) {
+            int mid = min + (max - min) / 2;
+            int count = 0;
+            for(int i = 0; i < r; i++) {
+                count += countSmallerOrEqual(matrix[i], mid);
+            }
+            if(count < desired) {
+                min = mid + 1;
+            } else {
+                max = mid;
+            }
+        }
+        return min;
+    }
+
+    public static int countSmallerOrEqual(int[] row, int target) {
+        int l = 0, h = row.length;
+        while(l < h) {
+            int mid = l + (h - l) / 2;
+            if(row[mid] <= target)
+                l = mid + 1;
+            else
+                h = mid;
+        }
+        return l;
+    }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
     public static void main(String[] args) {
         int[][] mat = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
         };
-        System.out.println("first matrix : ");
+        System.out.println("given matrix : ");
         for (int i = 0; i < mat.length; i++) {
             System.out.println(Arrays.toString(mat[i]));
         }
+        System.out.println();
+        System.out.print("Median : ");
+        System.out.print(findMedian(mat));
 
-        int[][] mat2 = {
-                {9, 8, 7},
-                {6, 5, 4},
-                {3, 2, 1}
-        };
+       
 
-        System.out.println("second matrix  :");
-        for (int i = 0; i < mat2.length; i++) {
-            System.out.println(Arrays.toString(mat2[i]));
-        }
-        int[][] result = multiplyMatrices(mat, mat2);
-        System.out.println("Result matrix : ");
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(Arrays.toString(result[i]));
-        }
+        // int[][] mat2 = {
+        // {9, 8, 7},
+        // {6, 5, 4},
+        // {3, 2, 1}
+        // };
+
+        // System.out.println("second matrix :");
+        // for (int i = 0; i < mat2.length; i++) {
+        // System.out.println(Arrays.toString(mat2[i]));
+        // }
+        // int[][] result = multiplyMatrices(mat, mat2);
+
+        
+        
+        
 
     }
 }
