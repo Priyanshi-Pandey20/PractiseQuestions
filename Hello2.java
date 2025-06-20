@@ -173,21 +173,102 @@ public class Hello2 {
 
 
 
+
+
+    public static void printSnakePattern(int[][] matrix) { // print snake pattern
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        for(int i = 0; i < rows; i++) {
+            if(i % 2 == 0) {
+                // left to right
+                for(int j = 0; j < cols; j++) {
+                    System.out.print(matrix[i][j] + " ");
+                }
+            } else {
+                // right to left
+                for(int j = cols - 1; j >= 0; j--) {
+                    System.out.print(matrix[i][j] + " ");
+                }
+            }
+        }
+    }
+
+
+
+
+      public  static void setZeroesInMatrix(int[][] matrix) {
+        int rows = matrix.length; int cols = matrix[0].length;
+        boolean firstRowZero = false; boolean firstColZero = false;   
+        for (int j = 0; j < cols; j++) {
+            if (matrix[0][j] == 0) {
+                firstRowZero = true;
+                break;
+            } }
+        for (int i = 0; i < rows; i++) {
+            if (matrix[i][0] == 0) {
+                firstColZero = true;
+                break;
+            } }
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < cols; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }} }
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < cols; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }}}
+        if (firstRowZero) {
+            for (int j = 0; j < cols; j++) {
+                matrix[0][j] = 0;
+            } }
+         if (firstColZero) {
+            for (int i = 0; i < rows; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+       
+    }
+
     
 
-    public static void main(String[] args) {
-        int[][] mat = {
-                { 1, 2, 3 },
-                { 4, 5, 6 },
-                { 7, 8, 9 }
-        };
-        System.out.println("given matrix : ");
-        for (int i = 0; i < mat.length; i++) {
-            System.out.println(Arrays.toString(mat[i]));
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int val : row) {
+                System.out.print(val + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
-        System.out.print("Median : ");
-        System.out.print(findMedian(mat));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void main(String[] args) {
+       int[][] matrix = {
+            {1, 1, 1},
+            {1, 0, 1},
+            {1, 1, 1}
+        };
+
+        System.out.println("Original Matrix:");
+        printMatrix(matrix);
+
+        setZeroesInMatrix(matrix);
+
+        System.out.println("Modified Matrix:");
+        printMatrix(matrix);
 
        
 
