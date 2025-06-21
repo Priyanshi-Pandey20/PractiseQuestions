@@ -232,9 +232,6 @@ public class Hello2 {
         }
        
     }
-
-    
-
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
             for (int val : row) {
@@ -247,25 +244,47 @@ public class Hello2 {
 
 
 
+     public static void booleanMatrix(int[][] mat) {
+        int R = mat.length;
+        int C = mat[0].length;
+
+        boolean[] row = new boolean[R];
+        boolean[] col = new boolean[C];
+
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                if (mat[i][j] == 1) {
+                    row[i] = true;
+                    col[j] = true;
+                }
+            }
+        }
+
+      
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                if (row[i] || col[j]) {
+                    mat[i][j] = 1;
+                }
+            }
+        }
+    }
 
 
-
-
-
-
+    
 
 
     public static void main(String[] args) {
        int[][] matrix = {
-            {1, 1, 1},
-            {1, 0, 1},
-            {1, 1, 1}
+            {0, 0, 0},
+            {0, 1, 0},
+            {0, 0, 0}
         };
 
         System.out.println("Original Matrix:");
         printMatrix(matrix);
 
-        setZeroesInMatrix(matrix);
+       booleanMatrix(matrix);
 
         System.out.println("Modified Matrix:");
         printMatrix(matrix);
