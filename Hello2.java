@@ -114,9 +114,6 @@ public class Hello2 {
         System.out.println();
     }
 
-
-
-
     public static void printPascalTriangle(int n) { // Pascal's Traingle
         for (int line = 0; line < n; line++) {
             int val = 1;
@@ -133,23 +130,23 @@ public class Hello2 {
         }
     }
 
-     public static int findMedian(int[][] matrix) {
+    public static int findMedian(int[][] matrix) {
         int r = matrix.length;
         int c = matrix[0].length;
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
-        for(int i = 0; i < r; i++) {
+        for (int i = 0; i < r; i++) {
             min = Math.min(min, matrix[i][0]);
             max = Math.max(max, matrix[i][c - 1]);
         }
         int desired = (r * c + 1) / 2;
-        while(min < max) {
+        while (min < max) {
             int mid = min + (max - min) / 2;
             int count = 0;
-            for(int i = 0; i < r; i++) {
+            for (int i = 0; i < r; i++) {
                 count += countSmallerOrEqual(matrix[i], mid);
             }
-            if(count < desired) {
+            if (count < desired) {
                 min = mid + 1;
             } else {
                 max = mid;
@@ -160,9 +157,9 @@ public class Hello2 {
 
     public static int countSmallerOrEqual(int[] row, int target) {
         int l = 0, h = row.length;
-        while(l < h) {
+        while (l < h) {
             int mid = l + (h - l) / 2;
-            if(row[mid] <= target)
+            if (row[mid] <= target)
                 l = mid + 1;
             else
                 h = mid;
@@ -170,68 +167,70 @@ public class Hello2 {
         return l;
     }
 
-
-
-
-
-
     public static void printSnakePattern(int[][] matrix) { // print snake pattern
         int rows = matrix.length;
         int cols = matrix[0].length;
 
-        for(int i = 0; i < rows; i++) {
-            if(i % 2 == 0) {
+        for (int i = 0; i < rows; i++) {
+            if (i % 2 == 0) {
                 // left to right
-                for(int j = 0; j < cols; j++) {
+                for (int j = 0; j < cols; j++) {
                     System.out.print(matrix[i][j] + " ");
                 }
             } else {
                 // right to left
-                for(int j = cols - 1; j >= 0; j--) {
+                for (int j = cols - 1; j >= 0; j--) {
                     System.out.print(matrix[i][j] + " ");
                 }
             }
         }
     }
 
-
-
-
-      public  static void setZeroesInMatrix(int[][] matrix) {
-        int rows = matrix.length; int cols = matrix[0].length;
-        boolean firstRowZero = false; boolean firstColZero = false;   
+    public static void setZeroesInMatrix(int[][] matrix) {   // set the zero at row and col
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        boolean firstRowZero = false;
+        boolean firstColZero = false;
         for (int j = 0; j < cols; j++) {
             if (matrix[0][j] == 0) {
                 firstRowZero = true;
                 break;
-            } }
+            }
+        }
         for (int i = 0; i < rows; i++) {
             if (matrix[i][0] == 0) {
                 firstColZero = true;
                 break;
-            } }
+            }
+        }
         for (int i = 1; i < rows; i++) {
             for (int j = 1; j < cols; j++) {
                 if (matrix[i][j] == 0) {
                     matrix[i][0] = 0;
                     matrix[0][j] = 0;
-                }} }
+                }
+            }
+        }
         for (int i = 1; i < rows; i++) {
             for (int j = 1; j < cols; j++) {
                 if (matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
-                }}}
+                }
+            }
+        }
         if (firstRowZero) {
             for (int j = 0; j < cols; j++) {
                 matrix[0][j] = 0;
-            } }
-         if (firstColZero) {
+            }
+        }
+        if (firstColZero) {
             for (int i = 0; i < rows; i++) {
                 matrix[i][0] = 0;
             }
         }
-       
+
     }
+
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
             for (int val : row) {
@@ -241,10 +240,7 @@ public class Hello2 {
         }
     }
 
-
-
-
-     public static void booleanMatrix(int[][] mat) {
+    public static void booleanMatrix(int[][] mat) { // set 1 in entire row and col where it is given 1
         int R = mat.length;
         int C = mat[0].length;
 
@@ -260,7 +256,6 @@ public class Hello2 {
             }
         }
 
-      
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {
                 if (row[i] || col[j]) {
@@ -270,26 +265,49 @@ public class Hello2 {
         }
     }
 
+     public static  boolean searchMatrix2(int[][] matrix, int target) {// Search a 2D matrix 
+        int m = matrix.length, n = matrix[0].length;
+        int low = 0, high = m * n - 1;
 
-    
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int midElement = matrix[mid / n][mid % n];
+
+            if (midElement == target) return true;
+            else if (midElement < target) low = mid + 1;
+            else high = mid - 1;
+        }
+
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public static void main(String[] args) {
-       int[][] matrix = {
-            {0, 0, 0},
-            {0, 1, 0},
-            {0, 0, 0}
+        int[][] matrix = {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
         };
 
         System.out.println("Original Matrix:");
         printMatrix(matrix);
 
-       booleanMatrix(matrix);
-
-        System.out.println("Modified Matrix:");
-        printMatrix(matrix);
-
-       
+          int target = 3;
+        System.out.println("target "+target);
+        System.out.println(searchMatrix2(matrix, target));
 
         // int[][] mat2 = {
         // {9, 8, 7},
@@ -302,10 +320,6 @@ public class Hello2 {
         // System.out.println(Arrays.toString(mat2[i]));
         // }
         // int[][] result = multiplyMatrices(mat, mat2);
-
-        
-        
-        
 
     }
 }
