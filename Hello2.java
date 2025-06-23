@@ -186,7 +186,7 @@ public class Hello2 {
         }
     }
 
-    public static void setZeroesInMatrix(int[][] matrix) {   // set the zero at row and col
+    public static void setZeroesInMatrix(int[][] matrix) { // set the zero at row and col
         int rows = matrix.length;
         int cols = matrix[0].length;
         boolean firstRowZero = false;
@@ -265,7 +265,7 @@ public class Hello2 {
         }
     }
 
-     public static  boolean searchMatrix2(int[][] matrix, int target) {// Search a 2D matrix 
+    public static boolean searchMatrix2(int[][] matrix, int target) {// Search a 2D matrix
         int m = matrix.length, n = matrix[0].length;
         int low = 0, high = m * n - 1;
 
@@ -273,20 +273,44 @@ public class Hello2 {
             int mid = low + (high - low) / 2;
             int midElement = matrix[mid / n][mid % n];
 
-            if (midElement == target) return true;
-            else if (midElement < target) low = mid + 1;
-            else high = mid - 1;
+            if (midElement == target)
+                return true;
+            else if (midElement < target)
+                low = mid + 1;
+            else
+                high = mid - 1;
         }
 
         return false;
     }
 
+    public static int Occurrence(int[][] matrix) { // find the occurancee of element
+        int maxElement = Integer.MIN_VALUE;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                maxElement = Math.max(maxElement, matrix[i][j]);
+            }
+        }
 
+        int[] freq = new int[maxElement + 1];
 
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                freq[matrix[i][j]]++;
+            }
+        }
 
+        int maxFreq = 0;
+        System.out.println("Element : Frequency");
+        for (int i = 0; i < freq.length; i++) {
+            if (freq[i] > 0) {
+                System.out.println(i + " : " + freq[i]);
+                maxFreq = Math.max(maxFreq, freq[i]);
+            }
+        }
 
-
-
+        return maxFreq;
+    }
 
 
 
@@ -297,17 +321,16 @@ public class Hello2 {
 
     public static void main(String[] args) {
         int[][] matrix = {
-                { 1, 2, 3 },
-                { 4, 5, 6 },
-                { 7, 8, 9 }
+                { 11, 12, 13 },
+                { 14, 11, 16 },
+                { 11, 18, 11 }
         };
 
         System.out.println("Original Matrix:");
         printMatrix(matrix);
-
-          int target = 3;
-        System.out.println("target "+target);
-        System.out.println(searchMatrix2(matrix, target));
+        System.out.println();
+        int result = Occurrence(matrix);
+        System.out.println("Maximum frequency among all elements: " + result);
 
         // int[][] mat2 = {
         // {9, 8, 7},
