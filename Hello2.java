@@ -312,25 +312,46 @@ public class Hello2 {
         return maxFreq;
     }
 
+    public static void reverseWholeString(String str) { // reverse the whole string
+        str = str.trim();
+        int end = str.length(); 
+        String newStr = ""; 
 
-
-
-
-
-
+        for (int i = str.length() - 1; i >= 0; i--) {
+            if (str.charAt(i) == ' ' || i == 0) {
+                int start = (i == 0) ? i : i + 1;
+                for (int j = start; j < end; j++) { 
+                    newStr += str.charAt(j);
+                }
+                if (i != 0) {
+                    newStr += ' '; 
+                }
+                end = i;
+               
+                while (i > 0 && str.charAt(i - 1) == ' ') {
+                    i--;
+                }
+            }
+        }
+        System.out.println(newStr);
+    }
 
     public static void main(String[] args) {
-        int[][] matrix = {
-                { 11, 12, 13 },
-                { 14, 11, 16 },
-                { 11, 18, 11 }
-        };
+        // int[][] matrix = {
+        //         { 11, 12, 13 },
+        //         { 14, 11, 16 },
+        //         { 11, 18, 11 }
+        // };
 
-        System.out.println("Original Matrix:");
-        printMatrix(matrix);
-        System.out.println();
-        int result = Occurrence(matrix);
-        System.out.println("Maximum frequency among all elements: " + result);
+        // System.out.println("Original Matrix:");
+        // printMatrix(matrix);
+        // System.out.println();
+
+        String str = "Hi Java Programmers";
+        System.out.print("given string : ");
+        System.out.println(str);
+        reverseWholeString(str);
+        
 
         // int[][] mat2 = {
         // {9, 8, 7},
