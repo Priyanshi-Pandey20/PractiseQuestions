@@ -340,7 +340,7 @@ public class Hello2 {
 
 
 
-    public static String toUpperCase(String str){  // capatalize first word 
+    public static String toUpperCase(String str){  // capitalize first word 
         StringBuilder sb = new StringBuilder("");
         
         char ch = Character.toUpperCase(str.charAt(0));
