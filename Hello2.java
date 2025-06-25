@@ -336,34 +336,41 @@ public class Hello2 {
         System.out.println(newStr);
     }
 
-    public static void main(String[] args) {
-        // int[][] matrix = {
-        //         { 11, 12, 13 },
-        //         { 14, 11, 16 },
-        //         { 11, 18, 11 }
-        // };
 
-        // System.out.println("Original Matrix:");
-        // printMatrix(matrix);
-        // System.out.println();
 
-        String str = "Hi Java Programmers";
-        System.out.print("given string : ");
-        System.out.println(str);
-        reverseWholeString(str);
+
+
+    public static String toUpperCase(String str){  // capatalize first word 
+        StringBuilder sb = new StringBuilder("");
         
+        char ch = Character.toUpperCase(str.charAt(0));
+        sb.append(ch);
 
-        // int[][] mat2 = {
-        // {9, 8, 7},
-        // {6, 5, 4},
-        // {3, 2, 1}
-        // };
+        for(int i=1;i<str.length();i++)
+            if(str.charAt(i) == ' ' && i<str.length()-1) {
+                sb.append(str.charAt(i));
+                i++;
+                sb.append(Character.toUpperCase(str.charAt(i)));
+            }
+            else{
+                sb.append(str.charAt(i));
+            }
+      
+        return sb.toString();
+    }
 
-        // System.out.println("second matrix :");
-        // for (int i = 0; i < mat2.length; i++) {
-        // System.out.println(Arrays.toString(mat2[i]));
-        // }
-        // int[][] result = multiplyMatrices(mat, mat2);
 
+
+
+
+
+    
+
+    public static void main(String[] args) {
+        String str = "hi coders";
+        System.out.print("Given string : ");
+        System.out.println(str);
+        System.out.print("Modified string : ");
+       System.out.println(toUpperCase(str));
     }
 }
