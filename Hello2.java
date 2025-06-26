@@ -363,14 +363,60 @@ public class Hello2 {
 
 
 
+    public static boolean staircaseSearch( int matrix[][],int key){   //to find the  element 
+             int row=0,col=matrix[0].length-1;
+
+             while(row < matrix.length && col >= 0){
+                if(matrix[row][col] == key){
+                    System.out.println("found at index (" + row + "," + col + ")");
+                    return true;
+                }
+                else if(key < matrix[row][col]){
+                    col--;
+                }
+                else{
+                    row++;
+                }
+             }
+             System.out.println("key not found");
+             return false;
+      }
+
+       public static void printMatrix1(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {         
+            for (int j = 0; j < matrix[i].length; j++) {   
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println(); 
+        }
+    }
+
+    
+
+
+
+
+
 
     
 
     public static void main(String[] args) {
-        String str = "hi coders";
-        System.out.print("Given string : ");
-        System.out.println(str);
-        System.out.print("Modified string : ");
-       System.out.println(toUpperCase(str));
+         int[][] matrix = {
+        {11  , 12, 13, 14},
+        {15, 16, 17, 18},
+        {19, 20, 21, 22}
+    };
+   
+    
+     int key = 20;
+    System.out.println("The matrix is:");
+        printMatrix1(matrix);
+    boolean found = staircaseSearch(matrix, key);
+    if (found) {
+        System.out.println("Key " + key + " found in the matrix.");
+    } else {
+        System.out.println("Key " + key + " not found in the matrix.");
+    }
     }
 }
+
