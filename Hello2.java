@@ -391,6 +391,34 @@ public class Hello2 {
         }
     }
 
+
+    public static void rotate(int[][] matrix) { // Rotate matrix by 90 degrees clockwise
+        int n = matrix.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            reverseRow(matrix[i]);
+        }
+    }
+
+    private static void reverseRow(int[] row) {
+        int left = 0, right = row.length - 1;
+        while (left < right) {
+            int temp = row[left];
+            row[left] = row[right];
+            row[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
     
 
 
@@ -401,22 +429,25 @@ public class Hello2 {
     
 
     public static void main(String[] args) {
-         int[][] matrix = {
-        {11  , 12, 13, 14},
-        {15, 16, 17, 18},
-        {19, 20, 21, 22}
-    };
-   
-    
-     int key = 20;
-    System.out.println("The matrix is:");
+          int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+          System.out.println("Given matrix : ");
         printMatrix1(matrix);
-    boolean found = staircaseSearch(matrix, key);
-    if (found) {
-        System.out.println("Key " + key + " found in the matrix.");
-    } else {
-        System.out.println("Key " + key + " not found in the matrix.");
+        System.out.println();
+
+        rotate(matrix);
+        System.out.println("Roated matrix : ");
+      
+        for (int[] row : matrix) {
+            for (int val : row) {
+                System.out.print(val + " ");
+            }
+            System.out.println();
     }
-    }
+}
 }
 
