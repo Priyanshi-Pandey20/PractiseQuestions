@@ -314,20 +314,20 @@ public class Hello2 {
 
     public static void reverseWholeString(String str) { // reverse the whole string
         str = str.trim();
-        int end = str.length(); 
-        String newStr = ""; 
+        int end = str.length();
+        String newStr = "";
 
         for (int i = str.length() - 1; i >= 0; i--) {
             if (str.charAt(i) == ' ' || i == 0) {
                 int start = (i == 0) ? i : i + 1;
-                for (int j = start; j < end; j++) { 
+                for (int j = start; j < end; j++) {
                     newStr += str.charAt(j);
                 }
                 if (i != 0) {
-                    newStr += ' '; 
+                    newStr += ' ';
                 }
                 end = i;
-               
+
                 while (i > 0 && str.charAt(i - 1) == ' ') {
                     i--;
                 }
@@ -336,61 +336,49 @@ public class Hello2 {
         System.out.println(newStr);
     }
 
-
-
-
-
-    public static String toUpperCase(String str){  // capitalize first word 
+    public static String toUpperCase(String str) { // capitalize first word
         StringBuilder sb = new StringBuilder("");
-        
+
         char ch = Character.toUpperCase(str.charAt(0));
         sb.append(ch);
 
-        for(int i=1;i<str.length();i++)
-            if(str.charAt(i) == ' ' && i<str.length()-1) {
+        for (int i = 1; i < str.length(); i++)
+            if (str.charAt(i) == ' ' && i < str.length() - 1) {
                 sb.append(str.charAt(i));
                 i++;
                 sb.append(Character.toUpperCase(str.charAt(i)));
-            }
-            else{
+            } else {
                 sb.append(str.charAt(i));
             }
-      
+
         return sb.toString();
     }
 
+    public static boolean staircaseSearch(int matrix[][], int key) { // to find the element
+        int row = 0, col = matrix[0].length - 1;
 
-
-
-
-    public static boolean staircaseSearch( int matrix[][],int key){   //to find the  element 
-             int row=0,col=matrix[0].length-1;
-
-             while(row < matrix.length && col >= 0){
-                if(matrix[row][col] == key){
-                    System.out.println("found at index (" + row + "," + col + ")");
-                    return true;
-                }
-                else if(key < matrix[row][col]){
-                    col--;
-                }
-                else{
-                    row++;
-                }
-             }
-             System.out.println("key not found");
-             return false;
-      }
-
-       public static void printMatrix1(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {         
-            for (int j = 0; j < matrix[i].length; j++) {   
-                System.out.print(matrix[i][j] + " ");
+        while (row < matrix.length && col >= 0) {
+            if (matrix[row][col] == key) {
+                System.out.println("found at index (" + row + "," + col + ")");
+                return true;
+            } else if (key < matrix[row][col]) {
+                col--;
+            } else {
+                row++;
             }
-            System.out.println(); 
         }
+        System.out.println("key not found");
+        return false;
     }
 
+    public static void printMatrix1(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 
     public static void rotate(int[][] matrix) { // Rotate matrix by 90 degrees clockwise
         int n = matrix.length;
@@ -419,8 +407,7 @@ public class Hello2 {
         }
     }
 
-
-      public static void spiralPrint(int[][] matrix) {
+    public static void spiralPrint(int[][] matrix) { //spiral traversal of matrix 
         int rows = matrix.length;
         int cols = matrix[0].length;
 
@@ -430,19 +417,17 @@ public class Hello2 {
         int right = cols - 1;
 
         while (top <= bottom && left <= right) {
-            // Print top row
+
             for (int i = left; i <= right; i++) {
                 System.out.print(matrix[top][i] + " ");
             }
             top++;
 
-            // Print right column
             for (int i = top; i <= bottom; i++) {
                 System.out.print(matrix[i][right] + " ");
             }
             right--;
 
-            // Print bottom row
             if (top <= bottom) {
                 for (int i = right; i >= left; i--) {
                     System.out.print(matrix[bottom][i] + " ");
@@ -450,7 +435,6 @@ public class Hello2 {
                 bottom--;
             }
 
-            // Print left column
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
                     System.out.print(matrix[i][left] + " ");
@@ -461,35 +445,23 @@ public class Hello2 {
     }
 
 
-    
-
-
-
-
-
 
     
 
     public static void main(String[] args) {
           int[][] matrix = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+            { 1,  2,  3,  4 },
+            { 5,  6,  7,  8 },
+            { 9, 10, 11, 12 },
+            {13, 14, 15, 16 }
         };
 
-          System.out.println("Given matrix : ");
+        System.out.println("Given matrix : ");
         printMatrix1(matrix);
         System.out.println();
+        System.out.println("Final matrix after traversal : ");
+      spiralPrint(matrix);
 
-        rotate(matrix);
-        System.out.println("Roated matrix : ");
-      
-        for (int[] row : matrix) {
-            for (int val : row) {
-                System.out.print(val + " ");
-            }
-            System.out.println();
+       
     }
 }
-}
-
