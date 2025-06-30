@@ -444,6 +444,25 @@ public class Hello2 {
         }
     }
 
+      public static int maximalRectangle(int[][] matrix) {
+        if (matrix.length == 0) return 0;
+        int maxArea = 0;
+        int cols = matrix[0].length;
+        int[] heights = new int[cols];
+
+        // Process each row to update histogram heights
+        for (int[] row : matrix) {
+            for (int j = 0; j < cols; j++) {
+                // Build up the histogram
+                heights[j] = row[j] == 0 ? 0 : heights[j] + 1;
+            }
+           
+        }
+
+        return maxArea;
+    }
+
+
 
 
 
