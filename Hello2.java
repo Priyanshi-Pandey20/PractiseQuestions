@@ -444,25 +444,39 @@ public class Hello2 {
         }
     }
 
-      public static int maximalRectangle(int[][] matrix) {
+   public static int maximalRectangle(int[][] matrix) {
         if (matrix.length == 0) return 0;
-        int maxArea = 0;
-        int cols = matrix[0].length;
-        int[] heights = new int[cols];
 
-        // Process each row to update histogram heights
-        for (int[] row : matrix) {
+        int maxArea = 0;
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        int[] height = new int[cols];
+
+        for (int i = 0; i < rows; i++) {
+
+            // Step 1: Build the height array for histogram
             for (int j = 0; j < cols; j++) {
-                // Build up the histogram
-                heights[j] = row[j] == 0 ? 0 : heights[j] + 1;
+                if (matrix[i][j] == 0)
+                    height[j] = 0;
+                else
+                    height[j] += 1;
             }
-           
+
+            // Step 2: For each row's height, calculate max rectangle
+            for (int j = 0; j < cols; j++) {
+                int minHeight = height[j];
+                for (int k = j; k < cols; k++) {
+                    if (height[k] == 0) break;
+                    minHeight = Math.min(minHeight, height[k]);
+                    int width = k - j + 1;
+                    maxArea = Math.max(maxArea, width * minHeight);
+                }
+            }
         }
 
         return maxArea;
     }
-
-
 
 
 
