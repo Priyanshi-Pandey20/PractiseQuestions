@@ -444,7 +444,7 @@ public class Hello2 {
         }
     }
 
-    public static int maximalRectangle(int[][] matrix) {
+    public static int maximalRectangle(int[][] matrix) { // Maximum size rectangle of all 1s in binary matrix
         if (matrix.length == 0)
             return 0;
 
