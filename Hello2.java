@@ -407,7 +407,7 @@ public class Hello2 {
         }
     }
 
-    public static void spiralPrint(int[][] matrix) { //spiral traversal of matrix
+    public static void spiralPrint(int[][] matrix) { // spiral traversal of matrix
         int rows = matrix.length;
         int cols = matrix[0].length;
 
@@ -444,8 +444,9 @@ public class Hello2 {
         }
     }
 
-   public static int maximalRectangle(int[][] matrix) {
-        if (matrix.length == 0) return 0;
+    public static int maximalRectangle(int[][] matrix) {
+        if (matrix.length == 0)
+            return 0;
 
         int maxArea = 0;
         int rows = matrix.length;
@@ -455,7 +456,6 @@ public class Hello2 {
 
         for (int i = 0; i < rows; i++) {
 
-            // Step 1: Build the height array for histogram
             for (int j = 0; j < cols; j++) {
                 if (matrix[i][j] == 0)
                     height[j] = 0;
@@ -463,11 +463,11 @@ public class Hello2 {
                     height[j] += 1;
             }
 
-            // Step 2: For each row's height, calculate max rectangle
             for (int j = 0; j < cols; j++) {
                 int minHeight = height[j];
                 for (int k = j; k < cols; k++) {
-                    if (height[k] == 0) break;
+                    if (height[k] == 0)
+                        break;
                     minHeight = Math.min(minHeight, height[k]);
                     int width = k - j + 1;
                     maxArea = Math.max(maxArea, width * minHeight);
@@ -482,22 +482,21 @@ public class Hello2 {
 
 
 
-    
+
 
     public static void main(String[] args) {
-          int[][] matrix = {
-            { 1,  2,  3,  4 },
-            { 5,  6,  7,  8 },
-            { 9, 10, 11, 12 },
-            {13, 14, 15, 16 }
+        int[][] matrix = {
+                { 1, 0, 1, 0, 0 },
+                { 1, 0, 1, 1, 1 },
+                { 1, 1, 1, 1, 1 },
+                { 1, 0, 0, 1, 0 }
         };
 
         System.out.println("Given matrix : ");
         printMatrix1(matrix);
         System.out.println();
-        System.out.println("Final matrix after traversal : ");
-      spiralPrint(matrix);
-
        
+        System.out.println("Maximum rectangle of 1s: " + maximalRectangle(matrix));
+
     }
 }
