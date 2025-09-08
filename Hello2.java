@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Hello2 {
 
-    public static int[][] transposeMatrix(int m, int n, int[][] matrix) { // find transpose of matrix
+    public static int[][] transposeMatrix(int m, int n, int[][] matrix) { // find transpose of matrix pblm 
         int[][] ans = new int[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
