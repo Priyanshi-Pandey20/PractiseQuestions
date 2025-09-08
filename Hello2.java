@@ -28,7 +28,7 @@ public class Hello2 {
 
     }
 
-    public static void dfs(int i, int j, char grid[][], int n, int m) { // Count Islands
+    public static void dfs(int i, int j, char grid[][], int n, int m) { // Count Islands pblm
         if (i < 0 || j < 0 || i == n || j == m || grid[i][j] == '0') {
             return;
         }
