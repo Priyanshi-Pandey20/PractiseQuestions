@@ -12,7 +12,7 @@ public class Hello2 {
         return ans;
     }
 
-    public static void printDiagonalElements(int[][] matrix) { // print the diagonal elements
+    public static void printDiagonalElements(int[][] matrix) { // print the diagonal elements pblm
         System.out.print("primary diagonal elements : ");
         for (int i = 0; i < matrix.length; i++) {
             System.out.print(matrix[i][i] + " ");
