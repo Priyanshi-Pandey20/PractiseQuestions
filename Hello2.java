@@ -92,7 +92,7 @@ public class Hello2 {
         return result;
     }
 
-    public static void boundaryTraversal(int[][] matrix) { // Boundary traversal of the matrix
+    public static void boundaryTraversal(int[][] matrix) { // Boundary traversal of the matrix pblm 
         int n = matrix.length;
         int m = matrix[0].length;
         for (int j = 0; j < m; j++) {
