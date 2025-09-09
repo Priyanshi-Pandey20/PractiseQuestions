@@ -56,7 +56,7 @@ public class Hello2 {
 
     }
 
-    public static boolean searchMatrix(int[][] matrix, int target) { // search the target in the matrix
+    public static boolean searchMatrix(int[][] matrix, int target) { // search the target in the matrix pblm 
 
         int rows = matrix.length;
         int cols = matrix[0].length;
