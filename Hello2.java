@@ -75,7 +75,7 @@ public class Hello2 {
         return false;
     }
 
-    public static int[][] multiplyMatrices(int[][] A, int[][] B) {
+    public static int[][] multiplyMatrices(int[][] A, int[][] B) { // multiply matrices
         int rowsA = A.length;
         int colsA = A[0].length;
         int colsB = B[0].length;
