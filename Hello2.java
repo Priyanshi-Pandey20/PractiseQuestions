@@ -114,7 +114,7 @@ public class Hello2 {
         System.out.println();
     }
 
-    public static void printPascalTriangle(int n) { // Pascal's Traingle
+    public static void printPascalTriangle(int n) { // Pascal's Traingle pblm 
         for (int line = 0; line < n; line++) {
             int val = 1;
 
