@@ -155,7 +155,7 @@ public class Hello2 {
         return min;
     }
 
-    public static int countSmallerOrEqual(int[] row, int target) {
+    public static int countSmallerOrEqual(int[] row, int target) { // count Small or equal pblm 
         int l = 0, h = row.length;
         while (l < h) {
             int mid = l + (h - l) / 2;
