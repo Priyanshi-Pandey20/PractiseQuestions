@@ -130,7 +130,7 @@ public class Hello2 {
         }
     }
 
-    public static int findMedian(int[][] matrix) {
+    public static int findMedian(int[][] matrix) {   // find median in the matrix pblm 
         int r = matrix.length;
         int c = matrix[0].length;
         int min = Integer.MAX_VALUE;
