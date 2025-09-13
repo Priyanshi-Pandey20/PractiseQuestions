@@ -231,7 +231,7 @@ public class Hello2 {
 
     }
 
-    public static void printMatrix(int[][] matrix) {
+    public static void printMatrix(int[][] matrix) { //print matrix 
         for (int[] row : matrix) {
             for (int val : row) {
                 System.out.print(val + " ");
