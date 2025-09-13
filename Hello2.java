@@ -186,7 +186,7 @@ public class Hello2 {
         }
     }
 
-    public static void setZeroesInMatrix(int[][] matrix) { // set the zero at row and col
+    public static void setZeroesInMatrix(int[][] matrix) { // set the zero at row and col pblm 
         int rows = matrix.length;
         int cols = matrix[0].length;
         boolean firstRowZero = false;
