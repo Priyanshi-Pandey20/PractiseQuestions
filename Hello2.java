@@ -167,7 +167,7 @@ public class Hello2 {
         return l;
     }
 
-    public static void printSnakePattern(int[][] matrix) { // print snake pattern
+    public static void printSnakePattern(int[][] matrix) { // print snake pattern pblm 
         int rows = matrix.length;
         int cols = matrix[0].length;
 
