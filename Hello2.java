@@ -265,7 +265,7 @@ public class Hello2 {
         }
     }
 
-    public static boolean searchMatrix2(int[][] matrix, int target) {// Search a 2D matrix
+    public static boolean searchMatrix2(int[][] matrix, int target) {// Search a 2D matrix pblm 
         int m = matrix.length, n = matrix[0].length;
         int low = 0, high = m * n - 1;
 
