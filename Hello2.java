@@ -240,7 +240,7 @@ public class Hello2 {
         }
     }
 
-    public static void booleanMatrix(int[][] mat) { // set 1 in entire row and col where it is given 1
+    public static void booleanMatrix(int[][] mat) { // set 1 in entire row and col where it is given 1 pblm
         int R = mat.length;
         int C = mat[0].length;
 
