@@ -312,7 +312,7 @@ public class Hello2 {
         return maxFreq;
     }
 
-    public static void reverseWholeString(String str) { // reverse the whole string
+    public static void reverseWholeString(String str) { // reverse the whole string pblm 
         str = str.trim();
         int end = str.length();
         String newStr = "";
