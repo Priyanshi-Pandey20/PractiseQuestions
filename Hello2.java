@@ -284,7 +284,7 @@ public class Hello2 {
         return false;
     }
 
-    public static int Occurrence(int[][] matrix) { // find the occurancee of element
+    public static int Occurrence(int[][] matrix) { // find the occurancee of element pblm 
         int maxElement = Integer.MIN_VALUE;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
