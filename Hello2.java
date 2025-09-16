@@ -380,7 +380,7 @@ public class Hello2 {
         }
     }
 
-    public static void rotate(int[][] matrix) { // Rotate matrix by 90 degrees clockwise
+    public static void rotate(int[][] matrix) { // Rotate matrix by 90 degrees clockwise pblm 
         int n = matrix.length;
 
         for (int i = 0; i < n; i++) {
