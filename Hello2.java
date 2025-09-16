@@ -336,7 +336,7 @@ public class Hello2 {
         System.out.println(newStr);
     }
 
-    public static String toUpperCase(String str) { // capitalize first word
+    public static String toUpperCase(String str) { // capitalize first word pblm 
         StringBuilder sb = new StringBuilder("");
 
         char ch = Character.toUpperCase(str.charAt(0));
