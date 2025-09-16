@@ -354,7 +354,7 @@ public class Hello2 {
         return sb.toString();
     }
 
-    public static boolean staircaseSearch(int matrix[][], int key) { // to find the element
+    public static boolean staircaseSearch(int matrix[][], int key) { // to find the element pblm
         int row = 0, col = matrix[0].length - 1;
 
         while (row < matrix.length && col >= 0) {
