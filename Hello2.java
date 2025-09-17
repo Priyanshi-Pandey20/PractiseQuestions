@@ -407,7 +407,7 @@ public class Hello2 {
         }
     }
 
-    public static void spiralPrint(int[][] matrix) { // spiral traversal of matrix
+    public static void spiralPrint(int[][] matrix) { // spiral traversal of matrix pblm 
         int rows = matrix.length;
         int cols = matrix[0].length;
 
