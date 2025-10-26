@@ -56,6 +56,21 @@ public class Hello3 {
         }
     }
 
+    public static void reverseString(char[] s){
+        int start = 0;
+        int end = s.length-1;
+          
+     while(start<end){
+        char temp = s[start];
+        s[start] = s[end];
+        s[end] = temp;
+
+        start++;
+        end--;
+
+     }
+    }
+
     public static void main(String[]args){
     int[] nums = {0,1,0,3,12};
     // int target = 5;
@@ -69,6 +84,16 @@ public class Hello3 {
     for(int num :nums){
         System.out.println(num);
     }
+
+    char[] s = {'h','e','l','l','o'};
+    reverseString(s);
+    for (char c : s) {
+    System.out.print(c);  // olleh
+}
+
+    
+
+
      
 
     }
