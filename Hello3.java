@@ -71,6 +71,46 @@ public class Hello3 {
      }
     }
 
+    public static String reverseWords(String str){
+        char[] s = str.toCharArray();
+        int start = 0;
+
+        for(int i = 0;i<=s.length;i++){
+            if(i == s.length || s[i] == ' '){
+                reversePart(s,start,i-1);
+                start = i+1;
+
+            }
+        }
+        return new String(s);
+    }
+
+    public static void reversePart(char[] s,int start,int end){
+        while(start<end){
+             char temp = s[start];
+        s[start] = s[end];
+        s[end] = temp;
+
+        start++;
+        end--;
+        }
+    }
+
+    public static void mergeTwoSortedArray(int[] num1,int m,int[] num2,int n){  //brute force 
+         m = num1.length;
+         n = num2.length;
+
+         for(int j = 0, i = m;j<n;j++){
+            num1[i] = num2[j];
+            i++;
+         }
+         Arrays.sort(num1);
+
+    }
+
+
+
+
     public static void main(String[]args){
     int[] nums = {0,1,0,3,12};
     // int target = 5;
@@ -90,6 +130,10 @@ public class Hello3 {
     for (char c : s) {
     System.out.print(c);  // olleh
 }
+
+String str = "Let's take Leetcode contest";
+ String res = reverseWords(str);
+ System.out.println(res);
 
     
 
