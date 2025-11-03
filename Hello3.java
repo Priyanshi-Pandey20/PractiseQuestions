@@ -129,7 +129,7 @@ public class Hello3 {
 
     }
 
-    public static boolean isPalindrome(String s){
+    public static boolean isPalindrome(String s){   //check if it is palindrome after removing character
         String str = s.replaceAll("[A-Za-z0-9]", "").toLowerCase();
         String reversed = new StringBuilder(str).reverse().toString();
 
@@ -166,35 +166,72 @@ public class Hello3 {
      }
 
 
+     public static int SumClosest(int[] nums,int target){
+        int closestSum = 0;
+        int minDiff = Integer.MAX_VALUE;
+        Arrays.sort(nums);
+
+        for(int i = 0;i<nums.length-2;i++){
+            int j = i+1;
+            int k = nums.length-1;
+
+            while(j<k){
+                int currSum = nums[i] + nums[j] +nums[k];
+                int diff =Math.abs(target-currSum);
+                if(diff < minDiff){
+                     minDiff = diff;
+                     closestSum = currSum;
+                }
+                if(currSum == target){
+                    return currSum;
+                }else if(currSum < target){
+                    j++;
+                }else{
+                    k--;
+                }
+
+            }
+        }
+         return closestSum;
+     }
+
+
+     public static void sortColors(int[] nums){
+        int left = 0;
+        int temp = 0;
+        int right = nums.length-1;
+
+        while(temp<=right){
+            if(nums[temp] == 0){
+                int k = nums[temp];
+               nums[temp] = nums[left];
+               nums[left] = k;
+                temp++;
+                left++;
+            }
+            else if(nums[temp] == 1){
+                temp++;
+            }else{
+                int l = nums[temp];
+               nums[temp] = nums[right];
+                nums[right] = l;
+                right--;
+               
+            }
+        }
+     }
+
+
     public static void main(String[] args) {
-        // int[] nums = { 0, 1, 0, 3, 12 };
-        // // int target = 5;
-        // // int[] result= twoSum(nums, target);
-        // // System.out.println(Arrays.toString(result));
+        int[] nums = {1,2,0};
+        sortColors(nums);
+        System.out.println(Arrays.toString(nums));
+        for(int num:nums){
+            System.out.println(num + " ");
+    }
 
-        // // boolean hasduplicates = containsDuplicates1(nums);
-        // // System.out.println(hasduplicates);
-        // moveZeroes(nums);
+        
 
-        // for (int num : nums) {
-        //     System.out.println(num);
-        // }
-
-        // char[] s = { 'h', 'e', 'l', 'l', 'o' };
-        // reverseString(s);
-        // for (char c : s) {
-        //     System.out.print(c); // olleh
-        // }
-
-        String str = "abc";
-      boolean result = validPalindrom(str);
-      System.out.println(result);
-        // int[] num1 = { 1, 2, 3, 0, 0, 0 };
-        // int[] num2 = { 2, 5, 6 };
-
-        // int[] result = mergeTwoSortedArray1(num1, num2);
-
-        // System.out.println(Arrays.toString(result));
 
     }
 }
