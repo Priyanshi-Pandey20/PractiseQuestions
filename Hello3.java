@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class Hello3 {
@@ -129,109 +130,124 @@ public class Hello3 {
 
     }
 
-    public static boolean isPalindrome(String s){   //check if it is palindrome after removing character
+    public static boolean isPalindrome(String s) { // check if it is palindrome after removing character
         String str = s.replaceAll("[A-Za-z0-9]", "").toLowerCase();
         String reversed = new StringBuilder(str).reverse().toString();
 
-        if(str.equals(reversed)){
+        if (str.equals(reversed)) {
             return true;
-        }else if(str == ""){
+        } else if (str == "") {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-     public static boolean validPalindrom(String str){
-        int left = 0;int right = str.length()-1;
-        while(left<right){
-            if(str.charAt(left) != str.charAt(right)){
+    public static boolean validPalindrom(String str) {
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
                 return checkPalindrom(str, left + 1, right) || checkPalindrom(str, left, right - 1);
             }
             left++;
             right--;
         }
         return true;
-     }
+    }
 
-     public static boolean checkPalindrom(String str,int left,int right){
-        while(left<right){
-            if(str.charAt(left) != str.charAt(right)){
+    public static boolean checkPalindrom(String str, int left, int right) {
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
                 return false;
             }
             left++;
             right--;
         }
         return true;
-     }
+    }
 
-
-     public static int SumClosest(int[] nums,int target){
+    public static int SumClosest(int[] nums, int target) {
         int closestSum = 0;
         int minDiff = Integer.MAX_VALUE;
         Arrays.sort(nums);
 
-        for(int i = 0;i<nums.length-2;i++){
-            int j = i+1;
-            int k = nums.length-1;
+        for (int i = 0; i < nums.length - 2; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
 
-            while(j<k){
-                int currSum = nums[i] + nums[j] +nums[k];
-                int diff =Math.abs(target-currSum);
-                if(diff < minDiff){
-                     minDiff = diff;
-                     closestSum = currSum;
+            while (j < k) {
+                int currSum = nums[i] + nums[j] + nums[k];
+                int diff = Math.abs(target - currSum);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closestSum = currSum;
                 }
-                if(currSum == target){
+                if (currSum == target) {
                     return currSum;
-                }else if(currSum < target){
+                } else if (currSum < target) {
                     j++;
-                }else{
+                } else {
                     k--;
                 }
 
             }
         }
-         return closestSum;
-     }
-
-
-     public static void sortColors(int[] nums){
-        int left = 0;
-        int temp = 0;
-        int right = nums.length-1;
-
-        while(temp<=right){
-            if(nums[temp] == 0){
-                int k = nums[temp];
-               nums[temp] = nums[left];
-               nums[left] = k;
-                temp++;
-                left++;
-            }
-            else if(nums[temp] == 1){
-                temp++;
-            }else{
-                int l = nums[temp];
-               nums[temp] = nums[right];
-                nums[right] = l;
-                right--;
-               
-            }
-        }
-     }
-
-
-    public static void main(String[] args) {
-        int[] nums = {1,2,0};
-        sortColors(nums);
-        System.out.println(Arrays.toString(nums));
-        for(int num:nums){
-            System.out.println(num + " ");
+        return closestSum;
     }
 
-        
+    public static void sortColors(int[] nums) {
+        int left = 0;
+        int temp = 0;
+        int right = nums.length - 1;
 
+        while (temp <= right) {
+            if (nums[temp] == 0) {
+                int k = nums[temp];
+                nums[temp] = nums[left];
+                nums[left] = k;
+                temp++;
+                left++;
+            } else if (nums[temp] == 1) {
+                temp++;
+            } else {
+                int l = nums[temp];
+                nums[temp] = nums[right];
+                nums[right] = l;
+                right--;
+
+            }
+        }
+    }
+
+    public static int[] findSquare(int[] nums) {
+        int n = nums.length;
+        int[] arr = new int[n];
+        int left = 0;
+        int right = n-1;
+        int pos = n-1;
+
+        while(left <= right){
+            int leftSq = nums[left] * nums[left];
+            int rightSq = nums[right] * nums[right];
+            if(leftSq > rightSq){
+              arr[pos] = leftSq;
+              left++;
+            }else{
+               arr[pos] = rightSq;
+                right--;
+            }
+            pos--;
+        }
+        return arr;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {-4,-1,0,3,10};
+       int[] result= findSquare(nums);
+        for(int num :result){
+        System.out.print(num + " ");
+        }
 
     }
 }
