@@ -241,13 +241,55 @@ public class Hello3 {
         }
         return arr;
     }
+    
+
+    public static int validTraingle(int[] nums){   
+        Arrays.sort(nums);
+        int n = nums.length;
+        int count = 0;
+
+        for(int k = n-1;k>=2;k--){
+            int i = 0;
+            int j = k-1;
+            while(i<j){
+                if(nums[i] + nums[j] > nums[k]){
+                    count += (j-i);
+                    j--;
+                }else{
+                    i++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int numRescueBoats(int[] nums,int limit){
+        Arrays.sort(nums);
+        int n = nums.length;
+        int count = 0;
+            int j = 0;
+            int k = n-1;
+            while(j<=k){
+                if(nums[j] + nums[k] <= limit){
+                    j++;
+                    k--;
+                }else{
+                    k--;
+                }
+                  count +=1;
+        }
+        return count;
+        
+    }
+
+
 
     public static void main(String[] args) {
-        int[] nums = {-4,-1,0,3,10};
-       int[] result= findSquare(nums);
-        for(int num :result){
-        System.out.print(num + " ");
-        }
+        int[] nums = {3,2,2,1};
+        int limit = 3;
+       int result =  numRescueBoats(nums, limit);
+       System.out.println(result);
+          
 
     }
 }
