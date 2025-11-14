@@ -279,17 +279,58 @@ public class Hello3 {
                   count +=1;
         }
         return count;
-        
     }
 
+    public static int countSubstring(String s){
+        char[] arr = s.toCharArray();
+        int count = 0;
+        int n = arr.length;
+        
 
+        for(int i = 0;i< n;i++){
+            for(int j = i;j<n;j++){
+                int left = i;
+                int right = j;
+                boolean isPalindrome = true;
+                while(left<right)
+                if(arr[left] != arr[right]){
+                    isPalindrome = false;
+                    break;
+                }else{
+                    left++;
+                    right--;
+                }
+
+                if(isPalindrome){
+                count++;
+                }
+            }
+        }
+        return count;
+
+    }
+
+    public static int findDuplicate(int[] nums){
+        int n = nums.length;
+        int count = 0;
+       for(int i = 0;i<n-1;i++){
+        for(int j = i+1;j<n;j++){
+           
+                if(nums[i] == nums[j]){
+                   return nums[i];
+                }
+            
+        }
+    }
+        return -1;
+    }
 
     public static void main(String[] args) {
-        int[] nums = {3,2,2,1};
-        int limit = 3;
-       int result =  numRescueBoats(nums, limit);
-       System.out.println(result);
-          
+      int[] nums = {3,3,3,3,3};
+      int result = findDuplicate(nums);
+      System.out.println(result);
+
+
 
     }
 }
