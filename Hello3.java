@@ -345,13 +345,27 @@ public class Hello3 {
 
     }
 
-    public static void main(String[] args) {
-        int[] arr1 = { 2,1,100,3};
-        int[] arr2 = { -5,-2,10,-3,7 };
-        int d = 6;
+    public static int[] kthSmallest(int[] arr,int k){
+        int n = arr.length;
 
-        int result = findTheDistance(arr1, arr2, d);
-        System.out.println(result);
+        List<int[]> fractions = new ArrayList<>();
+
+        for(int i = 0;i<n-1;i++){
+            for(int j = i+1;j<n;j++){
+                fractions.add(new int[]{arr[i],arr[j]});
+            }
+        }
+        Collections.sort(fractions,(a,b)->{
+        return a[0] *b[1] -a[1] *b[0];
+        });
+        return fractions.get(k-1);
+    }
+
+    public static void main(String[] args) {
+      int[] arr = {1,2,3,5} ;
+      int k = 3;
+        int[] result = kthSmallest(arr, k);
+        System.out.println(Arrays.toString(result));
 
     }
 }
