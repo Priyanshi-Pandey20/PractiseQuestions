@@ -224,38 +224,37 @@ public class Hello3 {
         int n = nums.length;
         int[] arr = new int[n];
         int left = 0;
-        int right = n-1;
-        int pos = n-1;
+        int right = n - 1;
+        int pos = n - 1;
 
-        while(left <= right){
+        while (left <= right) {
             int leftSq = nums[left] * nums[left];
             int rightSq = nums[right] * nums[right];
-            if(leftSq > rightSq){
-              arr[pos] = leftSq;
-              left++;
-            }else{
-               arr[pos] = rightSq;
+            if (leftSq > rightSq) {
+                arr[pos] = leftSq;
+                left++;
+            } else {
+                arr[pos] = rightSq;
                 right--;
             }
             pos--;
         }
         return arr;
     }
-    
 
-    public static int validTraingle(int[] nums){   
+    public static int validTraingle(int[] nums) {
         Arrays.sort(nums);
         int n = nums.length;
         int count = 0;
 
-        for(int k = n-1;k>=2;k--){
+        for (int k = n - 1; k >= 2; k--) {
             int i = 0;
-            int j = k-1;
-            while(i<j){
-                if(nums[i] + nums[j] > nums[k]){
-                    count += (j-i);
+            int j = k - 1;
+            while (i < j) {
+                if (nums[i] + nums[j] > nums[k]) {
+                    count += (j - i);
                     j--;
-                }else{
+                } else {
                     i++;
                 }
             }
@@ -263,46 +262,45 @@ public class Hello3 {
         return count;
     }
 
-    public static int numRescueBoats(int[] nums,int limit){
+    public static int numRescueBoats(int[] nums, int limit) {
         Arrays.sort(nums);
         int n = nums.length;
         int count = 0;
-            int j = 0;
-            int k = n-1;
-            while(j<=k){
-                if(nums[j] + nums[k] <= limit){
-                    j++;
-                    k--;
-                }else{
-                    k--;
-                }
-                  count +=1;
+        int j = 0;
+        int k = n - 1;
+        while (j <= k) {
+            if (nums[j] + nums[k] <= limit) {
+                j++;
+                k--;
+            } else {
+                k--;
+            }
+            count += 1;
         }
         return count;
     }
 
-    public static int countSubstring(String s){
+    public static int countSubstring(String s) {
         char[] arr = s.toCharArray();
         int count = 0;
         int n = arr.length;
-        
 
-        for(int i = 0;i< n;i++){
-            for(int j = i;j<n;j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
                 int left = i;
                 int right = j;
                 boolean isPalindrome = true;
-                while(left<right)
-                if(arr[left] != arr[right]){
-                    isPalindrome = false;
-                    break;
-                }else{
-                    left++;
-                    right--;
-                }
+                while (left < right)
+                    if (arr[left] != arr[right]) {
+                        isPalindrome = false;
+                        break;
+                    } else {
+                        left++;
+                        right--;
+                    }
 
-                if(isPalindrome){
-                count++;
+                if (isPalindrome) {
+                    count++;
                 }
             }
         }
@@ -310,27 +308,50 @@ public class Hello3 {
 
     }
 
-    public static int findDuplicate(int[] nums){
+    public static int findDuplicate(int[] nums) {
         int n = nums.length;
         int count = 0;
-       for(int i = 0;i<n-1;i++){
-        for(int j = i+1;j<n;j++){
-           
-                if(nums[i] == nums[j]){
-                   return nums[i];
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+
+                if (nums[i] == nums[j]) {
+                    return nums[i];
                 }
-            
+
+            }
         }
-    }
         return -1;
     }
 
+    public static int findTheDistance(int[] arr1, int[] arr2, int d) {
+        int n = arr1.length;
+        int m = arr2.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            boolean isFar = true;
+            for (int j = 0; j < m; j++) {
+                int diff = Math.abs(arr1[i] - arr2[j]);
+                if (diff <= d) {
+                    isFar = false;
+                    break;
+                }
+            }
+            if (isFar) {
+                count++;
+            }
+
+        }
+        return count;
+
+    }
+
     public static void main(String[] args) {
-      int[] nums = {3,3,3,3,3};
-      int result = findDuplicate(nums);
-      System.out.println(result);
+        int[] arr1 = { 2,1,100,3};
+        int[] arr2 = { -5,-2,10,-3,7 };
+        int d = 6;
 
-
+        int result = findTheDistance(arr1, arr2, d);
+        System.out.println(result);
 
     }
 }
