@@ -346,30 +346,29 @@ public class Hello3 {
 
     }
 
-    public static int[] kthSmallest(int[] arr,int k){
+    public static int[] kthSmallest(int[] arr, int k) {
         int n = arr.length;
 
         List<int[]> fractions = new ArrayList<>();
 
-        for(int i = 0;i<n-1;i++){
-            for(int j = i+1;j<n;j++){
-                fractions.add(new int[]{arr[i],arr[j]});
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                fractions.add(new int[] { arr[i], arr[j] });
             }
         }
-        Collections.sort(fractions,(a,b)->{
-        return a[0] *b[1] -a[1] *b[0];
+        Collections.sort(fractions, (a, b) -> {
+            return a[0] * b[1] - a[1] * b[0];
         });
-        return fractions.get(k-1);
+        return fractions.get(k - 1);
     }
 
-
-    public static String reverseString(String s,int k){
+    public static String reverseString(String s, int k) {
         StringBuilder sb = new StringBuilder(s);
-        for(int i = 0;i<s.length();i+=2*k){
+        for (int i = 0; i < s.length(); i += 2 * k) {
 
-            int end = Math.min(i+k, s.length());
-            
-            String reversedPart = new StringBuilder(sb.substring(i,end)).reverse().toString();
+            int end = Math.min(i + k, s.length());
+
+            String reversedPart = new StringBuilder(sb.substring(i, end)).reverse().toString();
 
             sb.replace(i, end, reversedPart);
         }
@@ -377,11 +376,62 @@ public class Hello3 {
         return sb.toString();
     }
 
+    public static String ReverseString1(String s) {
+        char[] str = s.toCharArray();
+
+        int start = 0;
+
+        for (int end = 0; end <= str.length; end++) {
+            if (end == str.length || str[end] == ' ') {
+                int left = start;
+                int right = end - 1;
+
+                while (left < right) {
+                    char temp = str[left];
+                    str[left] = str[right];
+                    str[right] = temp;
+                    left++;
+                    right--;
+
+                }
+                start = end + 1;
+            }
+        }
+        return new String(str);
+
+    }
+
+    public static void rotate(int[] arr,int k){
+        int n = arr.length;
+
+        k = k%n;
+        reverse(arr, 0, n-1);
+         reverse(arr, 0, k-1);
+          reverse(arr, k, n-1);
+
+
+    }
+
+    public static void reverse(int[] arr,int start,int end){
+        for(int i = start;i<end;i++){
+
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+
+    
     public static void main(String[] args) {
-     String s = "abcd";
-     int k = 2;
-     String result = reverseString(s, k);
-     System.out.println(result);
+      int[] nums = {-1,-100,3,99};
+      int k = 2;
+    rotate(nums, k);
+      for(int num :nums){
+        System.out.println(num);
+      }
 
     }
 }
