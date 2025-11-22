@@ -1,4 +1,5 @@
 
+import java.security.Key;
 import java.util.*;
 
 public class Hello3 {
@@ -361,11 +362,26 @@ public class Hello3 {
         return fractions.get(k-1);
     }
 
+
+    public static String reverseString(String s,int k){
+        StringBuilder sb = new StringBuilder(s);
+        for(int i = 0;i<s.length();i+=2*k){
+
+            int end = Math.min(i+k, s.length());
+            
+            String reversedPart = new StringBuilder(sb.substring(i,end)).reverse().toString();
+
+            sb.replace(i, end, reversedPart);
+        }
+
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
-      int[] arr = {1,2,3,5} ;
-      int k = 3;
-        int[] result = kthSmallest(arr, k);
-        System.out.println(Arrays.toString(result));
+     String s = "abcd";
+     int k = 2;
+     String result = reverseString(s, k);
+     System.out.println(result);
 
     }
 }
