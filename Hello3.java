@@ -401,19 +401,18 @@ public class Hello3 {
 
     }
 
-    public static void rotate(int[] arr,int k){
+    public static void rotate(int[] arr, int k) {
         int n = arr.length;
 
-        k = k%n;
-        reverse(arr, 0, n-1);
-         reverse(arr, 0, k-1);
-          reverse(arr, k, n-1);
-
+        k = k % n;
+        reverse(arr, 0, n - 1);
+        reverse(arr, 0, k - 1);
+        reverse(arr, k, n - 1);
 
     }
 
-    public static void reverse(int[] arr,int start,int end){
-        for(int i = start;i<end;i++){
+    public static void reverse(int[] arr, int start, int end) {
+        for (int i = start; i < end; i++) {
 
             int temp = arr[start];
             arr[start] = arr[end];
@@ -423,15 +422,36 @@ public class Hello3 {
         }
     }
 
+    public static int minimumRecolor(String blocks,int k){
+        int n = blocks.length();
 
-    
+        int white = 0;
+        for(int i = 0;i<k;i++){
+            if(blocks.charAt(i) == 'W'){
+                white++;
+            }
+        }
+        int ans = white;
+
+        for(int i = k;i<n;i++){
+            if(blocks.charAt(i-k) == 'W'){
+                white--;
+            }
+            if(blocks.charAt(i) == 'W'){
+                white++;
+            }
+          ans = Math.min(ans,white);
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
-      int[] nums = {-1,-100,3,99};
-      int k = 2;
-    rotate(nums, k);
-      for(int num :nums){
-        System.out.println(num);
-      }
+        String blocks = "WBBWWBBWBW";
+      int k = 7;
+     System.out.println(minimumRecolor(blocks, k)); 
+
+
+
 
     }
 }
